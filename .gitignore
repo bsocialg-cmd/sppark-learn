@@ -17,3 +17,8 @@ derby.log
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# OpenCode local state — never commit
+*.db
+*.db-wal
+*.db-shm
