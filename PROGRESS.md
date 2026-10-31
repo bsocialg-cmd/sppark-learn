@@ -9,13 +9,15 @@
 |---|--------|--------|-------|
 | 01 | Mental model + setup | ✅ done (theory) | 7 discussion questions, see `qa-log.md` |
 | 01b | Syntax basics (conveyor belt) | 🔄 in progress | `notes/07-functions-primer.md` |
-| 02 | DataFrames for real | ⬜ | reading files, schemas, withColumn, nulls |
-| 03 | Aggregations & joins | ⬜ | |
-| 04 | Spark SQL & windows | ⬜ | |
-| 05 | Performance & shuffles | ⬜ | needs local Docker |
-| 06 | Structured Streaming | ⬜ | |
-| 07 | Delta Lake | ⬜ | |
-| 08 | Capstone project | ⬜ | |
+| 02 | **Architecture I** (driver/executors) | 📘 lesson written | `lesson-02-architecture.md` |
+| 02b | Architecture II (jobs/stages/tasks) | ⬜ | next |
+| 03 | DataFrames for real | ⬜ | reading files, schemas, withColumn, nulls |
+| 04 | Aggregations & joins | ⬜ | |
+| 05 | Spark SQL & windows | ⬜ | |
+| 06 | Performance & shuffles | ⬜ | needs local Docker |
+| 07 | Structured Streaming | ⬜ | |
+| 08 | Delta Lake | ⬜ | |
+| 09 | Capstone project | ⬜ | |
 
 ## Repository
 - **Remote:** https://github.com/bsocialg-cmd/sppark-learn (public)

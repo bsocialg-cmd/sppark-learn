@@ -57,6 +57,7 @@
 - `sessions/` — one file per study session
 - `notes/` — one note per concept (analogy-first)
 - `lesson-01.md` — first lesson
+- `lesson-02-architecture.md` — architecture lesson (beginner, full lesson format)
 - `setup-databricks.md` — environment setup
 - `exercises/` — your code goes here
 - `solutions/` — worked answers
