@@ -44,6 +44,9 @@
   `git clone https://github.com/bsocialg-cmd/sppark-learn`
 - **After every session** I update `sessions/`, `qa-log.md`, `PROGRESS.md`, and any new
   `notes/`, then commit and push. Nothing lives only in chat.
+- **After every lesson** the lesson file and any new note are committed and pushed
+  immediately — not batched at the end of the week.
+- Lesson files are written in **simple English**, with every term defined and an analogy.
 - The repo is **public** — never commit tokens, passwords, or company data.
 
 ## Files
