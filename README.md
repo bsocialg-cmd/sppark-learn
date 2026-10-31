@@ -38,10 +38,20 @@
 | 5 | Structured Streaming | Build a streaming pipeline with checkpoints |
 | 6 | Delta Lake + project | Ship a portfolio ETL/streaming project |
 
+## Repository & sync (agreed 2026-10-31)
+- **Remote:** https://github.com/bsocialg-cmd/sppark-learn
+- This folder **is** the git repo. Clone it on any other computer:
+  `git clone https://github.com/bsocialg-cmd/sppark-learn`
+- **After every session** I update `sessions/`, `qa-log.md`, `PROGRESS.md`, and any new
+  `notes/`, then commit and push. Nothing lives only in chat.
+- The repo is **public** — never commit tokens, passwords, or company data.
+
 ## Files
 - `LEARNING-PLAN.md` — the full 6-week day-by-day plan
 - `PROGRESS.md` — what we've covered, quiz scores, homework
 - `qa-log.md` — every question you asked, your answer, the verdict
+- `GLOSSARY.md` — every term in plain English + analogy
+- `sessions/` — one file per study session
 - `notes/` — one note per concept (analogy-first)
 - `lesson-01.md` — first lesson
 - `setup-databricks.md` — environment setup

@@ -17,6 +17,12 @@
 | 07 | Delta Lake | ⬜ | |
 | 08 | Capstone project | ⬜ | |
 
+## Repository
+- **Remote:** https://github.com/bsocialg-cmd/sppark-learn (public)
+- Local folder = git repo root. Push after every session.
+- Session logs live in `sessions/`.
+- Last push: `a8a0226` (2026-10-31)
+
 ## Environment
 - **Primary:** Databricks Free Edition (serverless) — workspace live, notebook running
 - Community Edition was retired in 2025; Free Edition replaced it
