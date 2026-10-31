@@ -1,1 +1,17 @@
 https://87724c1940b00d23.qnn4ooafw5ua.opentunnel.xyz/auth/connect/S4IdUjUqTrhJX68bVbbskg
+
+# 1. install the sync plugin
+npm install -g opencode-github-sync
+
+# 2. sign in to GitHub (one-time, opens browser)
+gh auth login --hostname github.com --git-protocol https --web
+
+# 3. point at the private sync repo
+opencode-sync link bsocialg-cmd/opencode-sync-private
+
+# 4. pull the shared config (first sync: keeps the repo's version)
+opencode-sync pull
+
+# 5. turn on the every-5-minutes job
+opencode-sync autosync install
+opencode-sync autosync enable
