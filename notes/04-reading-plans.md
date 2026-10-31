@@ -53,6 +53,54 @@ A plan is a **tree of steps**, and a **stage boundary** appears at every `Exchan
 Two stages = two rounds of tasks, and the second one waits for the first to finish writing
 its shuffle files.
 
+## Beginner walkthrough — a worked example
+
+Query:
+```python
+spark.range(1000).groupBy((F.col("id") % 10).alias("g")).count().explain()
+```
+
+### Step 0 — what `explain()` is
+It prints the **recipe**, not the food. No data is processed.
+
+### Step 1 — read from the BOTTOM up
+The bottom line is where data is created. The top line is the result.
+
+### Step 2 — the numbers mean "how many batches"
+
+```
+PhotonRange Range (0, 1000, step=1, splits=8)
+```
+**Mail-room analogy:** 1,000 letters. Spark puts them into **8 trays** (`splits=8`),
+125 letters each. Each tray is one partition → one task.
+
+```
+PhotonShuffleExchangeSink hashpartitioning(_groupingexpression, 16)
+```
+`groupBy` needs all letters ending in the same digit **together**.
+So the letters are tipped out of the 8 trays and re-sorted into **16 pigeonholes**
+(`hashpartitioning(..., 16)`).
+
+The word **`Exchange`** is Spark's name for that re-sorting: a **shuffle**.
+
+### Step 3 — count the tasks
+| Phase | Partitions | Tasks |
+|---|---|---|
+| Generate the numbers | 8 (`splits=8`) | 8 |
+| After the shuffle | 16 (`hashpartitioning 16`) | 16 |
+| **Total** | — | **24** |
+
+The two numbers are **independent**: partitioning before a shuffle and after a shuffle are
+separate decisions.
+
+### Step 4 — why is 16 not 200?
+On Databricks serverless, `spark.sql.shuffle.partitions = auto`, so the platform picked 16.
+On OSS Spark it would be 200.
+
+### Step 5 — why this is silly
+24 tasks to process **1,000 rows**. At real scale (100 GB) those same numbers would be far too
+few. That mismatch is what "wrong partition count" means.
+
 ## How to practice
 Run a query, call `.explain()`, and answer:
 1. Where is the `Exchange`? → that's the expensive part
