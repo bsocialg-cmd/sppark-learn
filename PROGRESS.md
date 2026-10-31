@@ -83,6 +83,7 @@
 | `notes/05-partial-aggregation.md` | `partial_count` |
 | `notes/06-cache-and-persist.md` | caching/LCA/eviction |
 | `notes/07-functions-primer.md` | beginner syntax + function cheat sheet |
+| `notes/08-architecture.md` | driver/executors/cluster manager (Part I) |
 | `lesson-01.md` | full Lesson 1 text |
 | `setup-databricks.md` | signup + notebook import |
 | `exercises/` | homework notebooks |
