@@ -1,19 +1,39 @@
-# Chat exports
+# Chat exports — moved to the private repo
 
-One JSON file per learning session, named `YYYY-MM-DD-<slug>.json`.
+**Transcripts are not stored in this repository.** This repo is public.
 
-Created from the machine where the session ran:
+Per `AGENTS.md`, the latest transcript is copied to the private repo
+`bsocialg-cmd/opencode-sync-private` as:
 
-```bash
-opencode session list
-opencode session export <session-id> > sessions/exports/YYYY-MM-DD-<slug>.json
+```
+transcripts/spark-course-latest.json
 ```
 
-Restore on another machine:
+by the scheduled task **`opencode-spark-transcript`**, every 12 hours.
+
+## Manual run
 
 ```bash
-opencode session import sessions/exports/<file>.json --directory .
+# on this Mac
+./scripts/export-session.sh              # transcript → private repo, then commit learning files
+./scripts/export-session.sh --private-only
+./scripts/export-session.sh --dry-run
+
+# inspect the scheduled job
+launchctl list | grep opencode-spark-transcript
+tail -20 ~/Library/Logs/opencode-spark-transcript.log
 ```
 
-Exports contain the full transcript, prompts, and any file contents the agent read.
-Keep them private-safe: no tokens or credentials in the chat before exporting.
+## Restore a session on another machine
+
+```bash
+# in a clone of the private repo
+opencode session import transcripts/spark-course-latest.json --directory .
+```
+
+## Rules
+
+- Transcripts are exported with `--sanitize` and scanned for token-shaped strings
+  before commit; the script aborts if it finds any.
+- Never commit a transcript to this public repo.
+- One rolling file (`spark-course-latest.json`) — the latest session wins.

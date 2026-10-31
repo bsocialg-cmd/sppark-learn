@@ -94,13 +94,13 @@ print(best.get("id", "-"), (best.get("title") or "session").replace("\n", " "))
     if [ -n "$SES_ID" ]; then
       slug="$(printf '%s' "$SES_TITLE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//')"
       [ -n "$slug" ] || slug="session"
-      OUT="$PRIVATE_REPO/exports/$(date +%Y-%m-%d)-${slug}.json"
+      OUT="$PRIVATE_REPO/transcripts/spark-course-latest.json"
       log "session $SES_ID ($SES_TITLE) -> $OUT"
 
       if [ "$DRY_RUN" = "1" ]; then
         log "dry run: would export + push to private repo"
       else
-        mkdir -p "$PRIVATE_REPO/exports"
+        mkdir -p "$PRIVATE_REPO/transcripts"
         if "$OC" session export "$SES_ID" --sanitize > "$OUT" 2>/dev/null; then
           log "exported $(wc -c < "$OUT" | tr -d ' ') bytes"
           if grep -Eq "$PATTERNS" "$OUT"; then
@@ -109,7 +109,7 @@ print(best.get("id", "-"), (best.get("title") or "session").replace("\n", " "))
             rm -f "$OUT"
           else
             log "scan: clean"
-            git -C "$PRIVATE_REPO" add exports >/dev/null
+            git -C "$PRIVATE_REPO" add transcripts >/dev/null
             if git -C "$PRIVATE_REPO" diff --cached --quiet; then
               log "private: no changes"
             else
