@@ -11,12 +11,10 @@ classroom; this repo is the archive.
    - key definitions (and add new terms to `GLOSSARY.md`)
    - exercises done, mistakes made, open questions
    - the next step for the following lesson
-2. Export the full chat transcript to `sessions/exports/YYYY-MM-DD-<slug>.json`:
-
-   ```bash
-   opencode session list                         # find the session ID
-   opencode session export <session-id> > sessions/exports/YYYY-MM-DD-<slug>.json
-   ```
+2. **Transcripts do not go in this repo.** They are copied to the private repo
+   `bsocialg-cmd/opencode-sync-private` (`transcripts/spark-course-latest.json`) by the
+   scheduled task `opencode-spark-transcript`, every 12 hours. Never commit a full
+   transcript to this public repo.
 
 3. Add any new notes, exercises, or solutions in their usual folders.
 4. Update `PROGRESS.md` and `LEARNING-PLAN.md` when the plan changes.
