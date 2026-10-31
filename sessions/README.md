@@ -6,7 +6,18 @@ Chat transcripts, so the **discussion** survives switching PCs — not just the 
 OpenCode keeps chat history in a local database on each PC. It does **not** sync.
 These exported files do (they live in OneDrive).
 
-## Export after a session (on whichever PC you used)
+## One command (recommended, macOS)
+
+```bash
+./scripts/export-session.sh            # latest session → sanitize → scan → commit → push
+./scripts/export-session.sh --dry-run  # preview only
+./scripts/export-session.sh ses_xxxx   # a specific session
+```
+
+The script refuses to commit if it finds anything token-shaped (GitHub tokens, AWS keys,
+Databricks tokens, private keys, bearer tokens).
+
+## Manual export (on whichever PC you used)
 
 ```powershell
 opencode session list
